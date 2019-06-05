@@ -1,11 +1,22 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-const TodoForm = () => {
-  return (
-    <div>
+export default class TodoForm extends Component {
+  render() {
+    const {todo, handleChange, handleSubmit} = this.props;
+    return (
+      <div>
       Todo Form here!
-    </div>
-  )
-}
+      <form onSubmit={this.handleSubmit}>
 
-export default TodoForm
+      </form>
+      <input
+        type="text"
+        placeholder="add todo items"
+        value={todo}
+        onChange={handleChange}
+      />
+      <button type="submit">Submit</button>
+      </div>
+    )
+  }
+}

@@ -6,7 +6,7 @@ export default class TodoForm extends Component {
     return (
       <div>
       Todo Form here!
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={handleSubmit}>
 
       </form>
       <input

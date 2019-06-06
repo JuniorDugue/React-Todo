@@ -11,22 +11,39 @@ constructor(){
     this.state = {
         todos: [
           {id: 1528817077286, task: "wake up", completed: false},
-          {id: 1528817077287, task: "learn react", completed: false},
-          {id: 1528817077288, task: "practice css", completed: false},
-          {id: 1528817077289, task: "study MERN stack", completed: false},
-          {id: 1528817077290, task: "go to bed", completed: false}
+          {id: 1528817077287, task: "learn react", completed: false}
       ],
       todo: ""
     }
 }
 
-handleChange = (e) =>{console.log("handle change");};
-handleSubmit = (e) =>{console.log("handle submit");};
+handleChange = (e) =>{
+  this.setState({
+    todo: e.target.value
+  })
+};
+
+handleSubmit = (e) =>{
+  e.preventDefault();
+  const newTodo={
+    id:this.state.id,
+    task:this.state.todo
+  }
+
+ const newTodos = [...this.state.todos,newTodo];
+
+  this.setState({
+    todos: newTodos, 
+    todo: ""
+  })
+};
+
 clearList = () =>{console.log("clear list");};
 handleDelete = id => {console.log(`handle delete ${id}`);};
 
   render() {
-    // console.log(state); 
+    // console.log(this.state); 
+    
     return (
       <div className="container">
         <h2>Welcome to your Todo App!</h2>

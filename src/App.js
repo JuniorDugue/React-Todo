@@ -1,7 +1,7 @@
 import React from 'react';
-import Todo from "./components/TodoComponents/Todo";
-import TodoList from "./components/TodoComponents/TodoList";
+// import Todo from "./components/TodoComponents/Todo";
 import TodoForm from "./components/TodoComponents/TodoForm";
+import TodoList from './components/TodoComponents/TodoList';
 class App extends React.Component {
   // you will need a place to store your state in this component.
   // design `App` to be the parent component of your application.
@@ -9,55 +9,80 @@ class App extends React.Component {
 constructor(){
   super();
     this.state = {
-        todos: [
-          {id: 1528817077286, task: "wake up", completed: false},
-          {id: 1528817077287, task: "learn react", completed: false}
-      ],
-      todo: ""
-    }
+      uncompletedTasks: tasks
+    //     todos: [
+    //       {id: 1528817077286, task: "wake up", completed: false},
+    //       {id: 1528817077287, task: "learn react", completed: false}
+    //   ],
+    //   todo: ""
+    // }
+    };
 }
 
-handleChange = (e) =>{
-  this.setState({
-    todo: e.target.value
-  })
-};
-
-handleSubmit = (e) =>{
-  e.preventDefault();
-  const newTodo={
-    id:this.state.id,
-    task:this.state.todo
-  }
-
- const newTodos = [...this.state.todos,newTodo];
+addTask = newTask => {
+  const newTodoTask = {
+    task: newTask,
+    id: Date.now(),
+    completed: false
+  };
 
   this.setState({
-    todos: newTodos, 
-    todo: ""
-  })
-};
+    uncompletedTasks: [...this.state.uncompletedTasks, newTodoTask]
+  });
+}
 
-clearList = () =>{console.log("clear list");};
-handleDelete = id => {console.log(`handle delete ${id}`);};
+toggleTask = id => {
+  const newTask = this.state.uncompletedTasks.map(task =>{
+    if(task.id === id){
+      const newObj = {
+        ...task,
+        completed: !task.completed
+      };
+      return newObj;
+    }else {
+      return task;
+    }
+  })
+
+  this.setState( { uncompletedTasks: newTask});
+}
+
+// handleChange = (e) =>{
+//   this.setState({
+//     todo: e.target.value
+//   })
+// };
+
+// handleSubmit = (e) =>{
+//   e.preventDefault();
+//   const newTodo={
+//     id:this.state.id,
+//     task:this.state.todo
+//   }
+
+//  const newTodos = [...this.state.todos,newTodo];
+
+//   this.setState({
+//     todos: newTodos, 
+//     todo: ""
+//   },
+//   // ()=> console.log(this.state)
+//   )
+// };
+
+// clearList = () =>{console.log("clear list");};
+// handleDelete = id => {console.log(`handle delete ${id}`);};
 
   render() {
-    // console.log(this.state); 
-    
+
     return (
       <div className="container">
         <h2>Welcome to your Todo App!</h2>
-        <Todo />
         <TodoList 
-        todos={this.state.todos} 
-        handleChange={this.handleChange}
-        clearList={this.clearList} 
-        handleDelete={this.handleDelete}
+          tasks={this.state.uncompletedTasks}
         />
         <TodoForm 
-        todo={this.state.todo} 
-        handleChange={this.handleChange} 
-        handleSubmit={this.handleSubmit} 
+          addNewTask={this.addTask}
         />
       </div>
     );

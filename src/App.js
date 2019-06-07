@@ -2,6 +2,13 @@ import React from 'react';
 // import Todo from "./components/TodoComponents/Todo";
 import TodoForm from "./components/TodoComponents/TodoForm";
 import TodoList from './components/TodoComponents/TodoList';
+
+const tasks = [
+  {id: 1528817077286, task: "wake up", completed: false},
+  {id: 1528817077287, task: "learn react", completed: false},
+  {id: 1528817077288, task: "go to bed", completed: false}
+]
+
 class App extends React.Component {
   // you will need a place to store your state in this component.
   // design `App` to be the parent component of your application.
@@ -10,12 +17,6 @@ constructor(){
   super();
     this.state = {
       uncompletedTasks: tasks
-    //     todos: [
-    //       {id: 1528817077286, task: "wake up", completed: false},
-    //       {id: 1528817077287, task: "learn react", completed: false}
-    //   ],
-    //   todo: ""
-    // }
     };
 }
 
@@ -46,32 +47,6 @@ toggleTask = id => {
 
   this.setState( { uncompletedTasks: newTask});
 }
-
-// handleChange = (e) =>{
-//   this.setState({
-//     todo: e.target.value
-//   })
-// };
-
-// handleSubmit = (e) =>{
-//   e.preventDefault();
-//   const newTodo={
-//     id:this.state.id,
-//     task:this.state.todo
-//   }
-
-//  const newTodos = [...this.state.todos,newTodo];
-
-//   this.setState({
-//     todos: newTodos, 
-//     todo: ""
-//   },
-//   // ()=> console.log(this.state)
-//   )
-// };
-
-// clearList = () =>{console.log("clear list");};
-// handleDelete = id => {console.log(`handle delete ${id}`);};
 
   render() {
 

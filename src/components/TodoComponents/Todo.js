@@ -6,6 +6,7 @@ const Todo = (props) => {
   }
   return (
     <div className={`item${props.todoTask.uncompleted ? " uncompleted" : ""}`} onClick={clickHandler}>
+    <p>{props.todoTask.task}</p>
     </div>
   )
 }

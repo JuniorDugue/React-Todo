@@ -7,11 +7,11 @@ export default class TodoForm extends Component {
     };
   }
 
-  changeHandler = e => {
+  handleChange = e => {
     this.setState( {todo: e.target.value} );
   }
 
-  submitHandler = e => {
+  handleSubmit = e => {
     e.preventDefault();
 
     this.props.addTask(this.state.todo);
@@ -27,10 +27,10 @@ export default class TodoForm extends Component {
         type="text"
         placeholder="add todo items"
         value={this.state.todo}
-        onChange={handleChange}
+        onChange={this.handleChange}
       />
       <button type="submit">Submit</button>
-      <button type="button" onClick={clearList}>Clear</button>
+      {/* <button type="button" onClick={clearList}>Clear</button> */}
       </div>
     )
   }

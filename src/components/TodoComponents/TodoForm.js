@@ -9,20 +9,21 @@ export default class TodoForm extends Component {
 
   handleChange = e => {
     this.setState( {todo: e.target.value} );
-  }
+  };
 
   handleSubmit = e => {
     e.preventDefault();
+    console.log("LIST ITEM PROPS:", this.props.addNewTask);
+    console.log(this.state.todo);
+    this.props.addNewTask(this.state.todo);
+    this.setState({ todo: "" });
+  };
 
-    this.props.addTask(this.state.todo);
-    this.setState({todo: ""})
-  }
   render() {
     return (
       <div>
       <form onSubmit={this.handleSubmit}>
 
-      </form>
       <input
         type="text"
         placeholder="add todo items"
@@ -31,6 +32,7 @@ export default class TodoForm extends Component {
       />
       <button type="submit">Submit</button>
       {/* <button type="button" onClick={clearList}>Clear</button> */}
+      </form>
       </div>
     )
   }

@@ -1,0 +1,68 @@
+$blue:#30ACEF;
+$black:#20222B;
+$white:#FFFFFF;
+$grey:#EDEFF4;
+
+.container{
+
+  h2 {
+    text-align: center;
+  }
+
+  color: $white;
+  background: $blue;
+    .task-list{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  .task {
+    background-color: $black;
+    width: 45%;
+    text-align: left;
+    margin: 4px 0;
+    padding-left: 8px;
+    text-align: center;
+  }
+
+  .task.completed {
+    background-color: #3085b3;
+    text-decoration: line-through;
+  }
+  form {
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+  }
+  form > input {
+    background-color: $black;
+    border: 1px solid $white;
+    padding: 6px 0;
+    font-size: 1rem;
+    width: 240px;
+    outline: 0;
+    color: white;
+    border-bottom: 1px solid #e64944;
+    margin-right: 8px;
+  }
+  
+  button {
+    background-color: #e64944;
+    border: 1px solid #e64944;
+    color: white;
+    font-size: 16px;
+    padding: 6px 14px;
+  }
+  
+  input::placeholder {
+    color: $blue;
+    opacity: 1;
+  }
+  
+  .clear-btn {
+    margin-top: 16px;
+  }
+}

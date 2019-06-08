@@ -40,10 +40,10 @@ toggleTask = id => {
         completed: !task.completed
       };
       return newObj;
-    }else {
+    } else {
       return task;
     }
-  })
+  });
 
   this.setState( { uncompletedTasks: newTask});
 }
@@ -55,6 +55,7 @@ toggleTask = id => {
         <h2>Welcome to your Todo App!</h2>
         <TodoList 
           tasks={this.state.uncompletedTasks}
+          toggleTask={this.toggleTask}
         />
         <TodoForm 
           addNewTask={this.addTask}
